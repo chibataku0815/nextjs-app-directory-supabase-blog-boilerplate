@@ -1,15 +1,33 @@
 // stories/MyButton.stories.tsx
+// SCF3.0
 import { Meta, Story } from '@storybook/react';
-import MyButton from './MyButton';
+import { Provider } from 'jotai';
+import MyButton, { MyButtonProps } from './MyButton';
 
-export default {
+const meta: Meta = {
   title: 'Components/MyButton',
   component: MyButton,
-} as Meta;
+  decorators: [
+    (Story) => (
+      <Provider>
+        <Story />
+      </Provider>
+    ),
+  ],
+  argTypes: {
+    children: {
+      options: ['Primary', 'Secondary'],
+      control: { type: 'radio' },
+    },
+  },
+};
+export default meta;
 
-const Template: Story = (args) => <MyButton {...args} />;
+const Template: Story<MyButtonProps> = (args) => <MyButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Click me',
+  children: 'Primary',
 };
+
+export const Secondary = Template.bind({});

@@ -1,14 +1,26 @@
-// stories/CounterButton.stories.tsx
-import { Meta, Story } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Provider } from 'jotai';
 import CounterButton from '../components/CounterButton';
 
+// Meta型を使って、Storybookに関するメタデータを定義
 export default {
   title: 'Components/CounterButton',
   component: CounterButton,
-  decorators: [(story) => <Provider>{story()}</Provider>],
-} as Meta;
+  decorators: [
+    (Story) => (
+      <Provider>
+        <Story />
+      </Provider>
+    ),
+  ],
+} as ComponentMeta<typeof CounterButton>;
 
-const Template: Story = (args) => <CounterButton {...args} />;
+// CounterButtonコンポーネントのStoryを定義
+const Template: ComponentStory<typeof CounterButton> = (args) => (
+  <CounterButton {...args} />
+);
 
-export const Default = Template.bind({});
+// デフォルトのストーリーを定義
+export const Default = Template.bind({
+  children: 'CounterButton',
+});

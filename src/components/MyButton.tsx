@@ -2,7 +2,7 @@
 import { Button } from '@radix-ui/themes';
 import React, { FC } from 'react';
 
-interface MyButtonProps {
+export interface MyButtonProps {
   children: React.ReactNode;
 }
 

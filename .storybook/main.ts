@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
+    '@storybook/addon-docs',
   ],
   framework: '@storybook/nextjs',
   webpackFinal: async (config) => {
