@@ -19,6 +19,7 @@ const meta: Meta = {
       options: ['Primary', 'Secondary'],
       control: { type: 'radio' },
     },
+    onClick: { action: 'clicked' },
   },
 };
 export default meta;

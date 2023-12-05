@@ -1,13 +1,14 @@
 // components/MyButton.tsx
 import { Button } from '@radix-ui/themes';
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface MyButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
+  onClick?: () => void;
 }
 
-const MyButton: FC<MyButtonProps> = ({ children }) => {
-  return <Button>{children}</Button>;
+const MyButton: FC<MyButtonProps> = ({ children, onClick }) => {
+  return <Button onClick={onClick}>{children}</Button>;
 };
 
 export default MyButton;
