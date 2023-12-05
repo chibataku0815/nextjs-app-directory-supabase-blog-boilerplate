@@ -19,6 +19,7 @@
     "@radix-ui/themes": "^2.0.1",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.0",
+    "jotai": "^2.6.0",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18"
