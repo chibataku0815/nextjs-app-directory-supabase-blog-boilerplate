@@ -1,11 +1,20 @@
 // src/app/page.tsx
-import LoginForm from '@/components/forms/Login/Login';
+import Login from '@/components/forms/Login';
 import LogoutButton from '@/components/ui/LogoutButton';
+import { Database } from '@/types/supabase';
 import { Theme } from '@radix-ui/themes';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import styles from './page.module.css';
 import './theme-config.css';
 
 export default async function Page() {
+  const supabase = createServerComponentClient<Database>({ cookies });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
     <html lang="ja" suppressHydrationWarning>
       <body className={styles.body}>
@@ -19,7 +28,8 @@ export default async function Page() {
           <div id="root">
             {/* <ThemePanel /> */}
             <>
-              <LoginForm />
+              <Login />
+              <h1>Hello, {session?.user.id}</h1>
               <LogoutButton />
             </>
           </div>

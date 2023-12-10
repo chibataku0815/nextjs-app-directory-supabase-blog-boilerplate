@@ -1,7 +1,9 @@
 // hooks/useLogout.ts
-import { supabase } from '../utils/supabaseClient';
+import { Database } from '@/types/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const useLogout = () => {
+  const supabase = createClientComponentClient<Database>();
   const logout = async (): Promise<void> => {
     const { error } = await supabase.auth.signOut();
     if (error) {

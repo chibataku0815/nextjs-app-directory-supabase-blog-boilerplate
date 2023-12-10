@@ -1,12 +1,15 @@
 // hooks/useGithubAuth.js
+'use client';
 import { userAtom } from '@/store/user';
-import { supabase } from '@/utils/supabaseClient';
+import { Database } from '@/types/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useAtom } from 'jotai';
 import { usePathname } from 'next/navigation';
 
 const useGithubAuth = () => {
   const pathname = usePathname();
   const [, setUser] = useAtom(userAtom);
+  const supabase = createClientComponentClient<Database>();
 
   const signInWithGithub = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
