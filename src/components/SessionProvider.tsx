@@ -24,20 +24,6 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
       if (sessionError) {
         throw sessionError;
       }
-
-      if (userSession.session) {
-        const { data, error: userDataError } = await supabase
-          .from('users')
-          .select('*')
-          .eq('id', userSession.session.user.id)
-          .single();
-
-        if (userDataError) {
-          throw userDataError;
-        }
-
-        setUser(data);
-      }
     } catch (error) {
       console.error('Error reading session:', error);
       // ここでエラーに基づいた追加の処理を行う
