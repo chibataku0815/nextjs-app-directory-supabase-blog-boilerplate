@@ -1,7 +1,6 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'jotai';
-import CounterButton from '../components/CounterButton';
+import CounterButton from './CounterButton';
 
 describe('CounterButton', () => {
   it('should increment the count when clicked', () => {

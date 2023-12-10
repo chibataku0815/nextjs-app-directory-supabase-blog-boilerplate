@@ -1,4 +1,5 @@
-import { Button, Flex, Text, Theme, ThemePanel } from '@radix-ui/themes';
+import LoginForm from '@/components/forms/Login/LoginForm';
+import { Theme } from '@radix-ui/themes';
 import styles from './page.module.css';
 import './theme-config.css';
 
@@ -28,12 +29,9 @@ export default async function Page() {
           scaling="110%"
         >
           <div id="root">
-            <ThemePanel />
+            {/* <ThemePanel /> */}
             <>
-              <Flex direction="column" gap="2">
-                <Text>Hello from Radix Themes :</Text>
-                <Button>Lets go</Button>
-              </Flex>
+              <LoginForm />
             </>
           </div>
         </Theme>
