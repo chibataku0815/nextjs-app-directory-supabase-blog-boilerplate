@@ -1,17 +1,14 @@
 // hooks/useGithubAuth.js
-import { createBrowserClient } from '@supabase/ssr';
+import { userAtom } from '@/store/user';
+import { supabase } from '@/utils/supabaseClient';
+import { useAtom } from 'jotai';
 import { usePathname } from 'next/navigation';
 
 const useGithubAuth = () => {
   const pathname = usePathname();
-
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  const [, setUser] = useAtom(userAtom);
 
   const signInWithGithub = async () => {
-    console.log('Signing in with GitHub');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
@@ -24,6 +21,14 @@ const useGithubAuth = () => {
       return false;
     } else {
       console.log('Logged in successfully!');
+      const { data, error: userError } = await supabase.auth.getUser();
+
+      if (userError) {
+        console.error('Error getting user:', userError.message);
+        return false;
+      }
+
+      setUser(data.user); // data.user を setUser に渡す
       return true;
     }
   };

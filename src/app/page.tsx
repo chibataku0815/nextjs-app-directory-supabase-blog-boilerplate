@@ -1,4 +1,5 @@
 import LoginForm from '@/components/forms/Login/Login';
+import LogoutButton from '@/components/ui/LogoutButton';
 import { Theme } from '@radix-ui/themes';
 import styles from './page.module.css';
 import './theme-config.css';
@@ -18,6 +19,7 @@ export default async function Page() {
             {/* <ThemePanel /> */}
             <>
               <LoginForm />
+              <LogoutButton />
             </>
           </div>
         </Theme>

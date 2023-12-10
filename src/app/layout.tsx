@@ -1,5 +1,7 @@
 import '@radix-ui/themes/styles.css';
+import { Provider } from 'jotai';
 import type { Metadata } from 'next';
+import SessionProvider from '../components/SessionProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,5 +13,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <Provider>
+      <SessionProvider>{children}</SessionProvider>
+    </Provider>
+  );
 }

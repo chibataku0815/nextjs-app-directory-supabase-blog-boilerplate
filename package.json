@@ -17,6 +17,7 @@
     "*.js": "eslint --cache --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@fortawesome/fontawesome-pro": "^6.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
@@ -34,6 +35,7 @@
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.0",
     "jotai": "^2.6.0",
+    "jotai-devtools": "^0.7.1",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
     "react": "^18",
