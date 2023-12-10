@@ -1,3 +1,4 @@
+// src/store/user.ts
 import { User } from '@supabase/supabase-js';
 import { atom } from 'jotai';
 

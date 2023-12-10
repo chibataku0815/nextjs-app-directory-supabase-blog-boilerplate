@@ -1,3 +1,4 @@
+// src/app/page.tsx
 import LoginForm from '@/components/forms/Login/Login';
 import LogoutButton from '@/components/ui/LogoutButton';
 import { Theme } from '@radix-ui/themes';
