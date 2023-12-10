@@ -1,9 +1,14 @@
 // hooks/useGithubAuth.js
+import { createBrowserClient } from '@supabase/ssr';
 import { usePathname } from 'next/navigation';
-import { supabase } from '../utils/supabaseClient';
 
 const useGithubAuth = () => {
   const pathname = usePathname();
+
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   const signInWithGithub = async () => {
     console.log('Signing in with GitHub');
