@@ -1,4 +1,4 @@
-import LoginForm from '@/components/forms/Login/LoginForm';
+import LoginForm from '@/components/forms/Login/Login';
 import { Theme } from '@radix-ui/themes';
 import styles from './page.module.css';
 import './theme-config.css';
