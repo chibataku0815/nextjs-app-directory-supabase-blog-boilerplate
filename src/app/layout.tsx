@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import { Provider } from 'jotai';
 import type { Metadata } from 'next';
 import SessionProvider from '../components/provider/SessionProvider';
