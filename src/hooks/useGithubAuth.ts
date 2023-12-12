@@ -12,6 +12,7 @@ const useGithubAuth = () => {
   const supabase = createClientComponentClient<Database>();
 
   const signInWithGithub = async () => {
+    console.log('Logging in with GitHub...');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
@@ -24,14 +25,6 @@ const useGithubAuth = () => {
       return false;
     } else {
       console.log('Logged in successfully!');
-      const { data, error: userError } = await supabase.auth.getUser();
-
-      if (userError) {
-        console.error('Error getting user:', userError.message);
-        return false;
-      }
-
-      setUser(data.user); // data.user を setUser に渡す
       return true;
     }
   };

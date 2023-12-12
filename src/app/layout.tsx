@@ -1,7 +1,6 @@
-import '@radix-ui/themes/styles.css';
 import { Provider } from 'jotai';
 import type { Metadata } from 'next';
-import SessionProvider from '../components/SessionProvider';
+import SessionProvider from '../components/provider/SessionProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
