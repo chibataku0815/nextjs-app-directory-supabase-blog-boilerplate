@@ -1,21 +1,13 @@
-'use client';
-import { Theme } from '@radix-ui/themes';
+import '@/app/theme-config.css';
+import { JotaiProvider } from '@/components/provider/JotaiProvider';
 import '@radix-ui/themes/styles.css';
-import '../theme-config.css';
+import styles from './layout.module.css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body>
-        <Theme
-          asChild
-          appearance="dark"
-          accentColor="mint"
-          radius="large"
-          scaling="110%"
-        >
-          {children}
-        </Theme>
+      <body className={styles.body}>
+        <JotaiProvider>{children}</JotaiProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+// Supabase Auth Callback Route
+// Docs: https://supabase.io/docs/guides/auth
 import { Database } from '@/types/supabase';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
@@ -38,7 +40,13 @@ export async function GET(request: Request) {
   const code = searchParams.get('code');
   const next = searchParams.get('next') ?? '/';
 
+  console.log('next', next);
+  console.log('code', code);
+  console.log('isAuth', isAuth);
+  console.log('requestUrl', requestUrl);
+
   if (code) {
+    console.log('code', code);
     const cookieStore = cookies();
     const supabase = getSupabaseClient(cookieStore);
 
