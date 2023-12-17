@@ -5,13 +5,12 @@ import { Database } from '@/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import { useAtom } from 'jotai';
 import { FC, ReactNode, useEffect } from 'react';
-
 interface SessionProviderProps {
   children: ReactNode;
 }
 
 const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
-  const [, setUser] = useAtom(userAtom);
+  const [user, setUser] = useAtom(userAtom);
 
   const supabase = createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,8 +21,11 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
     readSession();
   }, []);
 
+  useEffect(() => {
+    console.log('user', user);
+  }, [user]);
+
   const readSession = async () => {
-    console.log('readSession');
     try {
       const { data: userSession, error: sessionError } =
         await supabase.auth.getSession();
@@ -40,6 +42,7 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
           .select('*')
           .eq('id', userSession.session?.user.id)
           .single();
+        console.log('data', data);
         setUser(data);
       }
     } catch (error) {
