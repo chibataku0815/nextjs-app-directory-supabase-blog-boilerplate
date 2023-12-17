@@ -21,10 +21,6 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
     readSession();
   }, []);
 
-  useEffect(() => {
-    console.log('user', user);
-  }, [user]);
-
   const readSession = async () => {
     try {
       const { data: userSession, error: sessionError } =
@@ -34,15 +30,12 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
         throw sessionError;
       }
 
-      console.log('userSession', userSession);
-
       if (userSession.session) {
         const { data } = await supabase
           .from('users')
           .select('*')
           .eq('id', userSession.session?.user.id)
           .single();
-        console.log('data', data);
         setUser(data);
       }
     } catch (error) {

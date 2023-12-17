@@ -1,6 +1,5 @@
 // src/app/layout.tsx
-import SessionProvider from '@/components/provider/SessionProvider';
-import { Provider } from 'jotai';
+import { JotaiProvider } from '@/components/provider/JotaiProvider';
 
 export default function RootLayout({
   children,
@@ -8,8 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Provider>
-      <SessionProvider>{children}</SessionProvider>
-    </Provider>
+    <html lang="ja">
+      <body>
+        <JotaiProvider>{children}</JotaiProvider>
+      </body>
+    </html>
   );
 }

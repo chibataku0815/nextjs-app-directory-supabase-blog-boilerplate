@@ -22,8 +22,6 @@ const useGithubAuth = () => {
 
     const { data, error: userError } = await supabase.auth.getUser();
 
-    console.log('data', data);
-
     if (userError) {
       console.log('Error getting user:', userError.message);
       return false;

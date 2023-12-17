@@ -5,14 +5,10 @@ import UserProfile from '@/components/ui/UserProfile';
 import { userAtom } from '@/store/user';
 import { Box, Container, Flex } from '@radix-ui/themes';
 import { useAtom } from 'jotai';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Header: React.FC = () => {
   const [user] = useAtom(userAtom);
-
-  useEffect(() => {
-    console.log('user Header', user);
-  }, [user]);
 
   return (
     <Box>

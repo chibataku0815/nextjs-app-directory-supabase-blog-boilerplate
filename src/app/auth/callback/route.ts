@@ -40,13 +40,7 @@ export async function GET(request: Request) {
   const code = searchParams.get('code');
   const next = searchParams.get('next') ?? '/';
 
-  console.log('next', next);
-  console.log('code', code);
-  console.log('isAuth', isAuth);
-  console.log('requestUrl', requestUrl);
-
   if (code) {
-    console.log('code', code);
     const cookieStore = cookies();
     const supabase = getSupabaseClient(cookieStore);
 
