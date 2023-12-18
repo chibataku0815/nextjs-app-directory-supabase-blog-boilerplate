@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html suppressHydrationWarning lang="ja">
       <body>
         <JotaiProvider>{children}</JotaiProvider>
       </body>
