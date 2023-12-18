@@ -1,8 +1,8 @@
 // components/LoginForm.tsx
 'use client';
 import useGithubAuth from '@/hooks/useGithubAuth';
-// import { faGithub } from '@fortawesome/free-brands-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@radix-ui/themes';
 
 const Login: React.FC = () => {
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
   return (
     <Button onClick={handleLogin}>
-      {/* <FontAwesomeIcon icon={faGithub} /> */}
+      <FontAwesomeIcon icon={faGithub} />
     </Button>
   );
 };

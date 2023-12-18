@@ -4,10 +4,11 @@ import { userAtom } from '@/store/user';
 import { Database } from '@/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import { useAtom } from 'jotai';
-import { FC, ReactNode, useEffect } from 'react';
-interface SessionProviderProps {
+import { FC, ReactNode, useCallback, useEffect } from 'react';
+
+type SessionProviderProps = {
   children: ReactNode;
-}
+};
 
 const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
   const [user, setUser] = useAtom(userAtom);
@@ -17,11 +18,7 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
-  useEffect(() => {
-    readSession();
-  }, []);
-
-  const readSession = async () => {
+  const readSession = useCallback(async () => {
     try {
       const { data: userSession, error: sessionError } =
         await supabase.auth.getSession();
@@ -42,7 +39,11 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
       console.error('Error reading session:', error);
       // ここでエラーに基づいた追加の処理を行う
     }
-  };
+  }, [supabase, setUser]); // supabaseとsetUserを依存関係に含める
+
+  useEffect(() => {
+    readSession();
+  }, [readSession]); // 依存配列にreadSessionを含める
 
   return <>{children}</>;
 };
