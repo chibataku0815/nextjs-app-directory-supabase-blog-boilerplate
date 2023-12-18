@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Provider } from 'jotai';
-import CounterButton from '../components/CounterButton';
+import CounterButton from './CounterButton';
 
 // Meta型を使って、Storybookに関するメタデータを定義
 export default {
