@@ -1,8 +1,11 @@
 // src/components/provider/JotaiProvider.tsx:
 'use client';
+import '@/app/theme-config.css';
 import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
 import { Provider } from 'jotai';
 import { DevTools } from 'jotai-devtools';
+import { ThemeProvider } from 'next-themes';
 import SessionProvider from './SessionProvider';
 
 type JotaiProviderProps = {
@@ -12,12 +15,20 @@ type JotaiProviderProps = {
 export function JotaiProvider(props: JotaiProviderProps) {
   return (
     <Provider>
-      <DevTools />
-      <SessionProvider>
-        <Theme asChild appearance="dark" accentColor="mint" radius="large">
-          {props.children}
-        </Theme>
-      </SessionProvider>
+      <ThemeProvider attribute="class">
+        <DevTools />
+        <SessionProvider>
+          <Theme
+            accentColor="mint"
+            grayColor="sand"
+            radius="large"
+            scaling="100%"
+            panelBackground="solid"
+          >
+            {props.children}
+          </Theme>
+        </SessionProvider>
+      </ThemeProvider>
     </Provider>
   );
 }

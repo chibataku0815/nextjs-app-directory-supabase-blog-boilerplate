@@ -1,6 +1,12 @@
 // src/app/home/default/page.tsx
-import '@radix-ui/themes/styles.css';
+
+import ThemeToggle from '@/components/ui/ThemeToggle';
+import { Flex } from '@radix-ui/themes';
 
 export default function Home() {
-  return <>page</>;
+  return (
+    <Flex direction="column" gap="2">
+      <ThemeToggle />
+    </Flex>
+  );
 }
