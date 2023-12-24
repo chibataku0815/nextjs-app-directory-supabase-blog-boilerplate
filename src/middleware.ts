@@ -1,3 +1,4 @@
+// src/middleware.ts
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
@@ -22,9 +23,31 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  const { data } = await supabase.auth.getSession();
+  // セッションデータを取得
+  const { data: sessionData } = await supabase.auth.getSession();
 
-  if (!data.session || data.session.user.user_metadata.role !== 'admin') {
+  // セッションが存在しない、またはユーザーIDが取得できない場合はリダイレクト
+  if (!sessionData.session || !sessionData.session.user.id) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  // usersテーブルからユーザー情報を取得
+  const { data: userData, error } = await supabase
+    .from('users')
+    .select('*')
+    .eq('id', sessionData.session.user.id)
+    .single();
+
+  console.log(userData);
+
+  // エラーがある場合はログ出力
+  if (error) {
+    console.error('Error fetching user data:', error);
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  // ユーザーのロールをチェック
+  if (userData.role !== 'admin') {
     return NextResponse.redirect(new URL('/', request.url));
   }
 

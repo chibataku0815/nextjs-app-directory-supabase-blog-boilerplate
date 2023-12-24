@@ -29,13 +29,13 @@ const useGithubAuth = () => {
       // CustomUser型に合わせてデータを変換
       const customUserData: CustomUser = {
         created_at: data.user.created_at,
-        display_name: data.user.user_metadata.full_name, // または他の適切なプロパティ
+        display_name: data.user.user_metadata.full_name,
         email: data.user.email ?? '',
         id: data.user.id,
-        image_url: data.user.user_metadata.avatar_url, // または他の適切なプロパティ
-        role: data.user.role ?? '',
+        image_url: data.user.user_metadata.avatar_url,
+        role: data.user.role ?? 'user',
         stripe_customer_id: null, // 必要に応じて設定
-        stripe_subscriptoin_id: null, // 必要に応じて設定
+        stripe_subscription_id: null, // 必要に応じて設定
         subscription_status: false, // 必要に応じて設定
       };
 

@@ -2,7 +2,8 @@
 'use client';
 
 import { CaretDownIcon } from '@radix-ui/react-icons';
-import { Button, DropdownMenu } from '@radix-ui/themes';
+import { Button, DropdownMenu, Link } from '@radix-ui/themes';
+import LogoutButton from '../LogoutButton';
 
 const UserProfile = () => {
   return (
@@ -14,28 +15,12 @@ const UserProfile = () => {
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
-        <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
-        <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
-
-        <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
-          <DropdownMenu.SubContent>
-            <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
-            <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
-
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
-          </DropdownMenu.SubContent>
-        </DropdownMenu.Sub>
-
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item>Share</DropdownMenu.Item>
-        <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <Link href="/dashboard">dashboard</Link>
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
         <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-          Delete
+          <LogoutButton />
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>

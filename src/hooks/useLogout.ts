@@ -7,6 +7,7 @@ import { useAtom } from 'jotai';
 const useLogout = () => {
   const [, setUser] = useAtom(userAtom);
   const supabase = createClientComponentClient<Database>();
+
   const logout = async (): Promise<void> => {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -14,6 +15,8 @@ const useLogout = () => {
     } else {
       console.log('Logged out successfully!');
       setUser(null);
+      // ログアウト成功後にページをリロード
+      window.location.reload();
     }
   };
 
