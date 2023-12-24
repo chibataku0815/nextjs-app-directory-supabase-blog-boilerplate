@@ -16,6 +16,7 @@ const Login: React.FC = () => {
   return (
     <Button onClick={handleLogin}>
       <FontAwesomeIcon icon={faGithub} />
+      ログイン
     </Button>
   );
 };

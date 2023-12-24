@@ -16,7 +16,8 @@ export function JotaiProvider(props: JotaiProviderProps) {
   return (
     <Provider>
       <ThemeProvider attribute="class">
-        <DevTools />
+        {/* 開発環境のみDevToolsを表示する */}
+        {process.env.NODE_ENV === 'development' && <DevTools />}
         <SessionProvider>
           <Theme
             accentColor="mint"
