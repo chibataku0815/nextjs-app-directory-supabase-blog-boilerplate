@@ -1,11 +1,9 @@
 // hooks/useLogout.ts
-import { userAtom } from '@/store/user';
 import { Database } from '@/types/supabase';
+import { queryClient } from '@/utils/queryClient';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useAtom } from 'jotai';
 
 const useLogout = () => {
-  const [, setUser] = useAtom(userAtom);
   const supabase = createClientComponentClient<Database>();
 
   const logout = async (): Promise<void> => {
@@ -14,9 +12,8 @@ const useLogout = () => {
       console.error('Error logging out:', error);
     } else {
       console.log('Logged out successfully!');
-      setUser(null);
-      // ログアウト成功後にページをリロード
-      window.location.reload();
+      queryClient.clear(); // クエリキャッシュをクリア
+      window.location.reload(); // ページをリロードして状態を完全にリセット
     }
   };
 
