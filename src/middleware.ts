@@ -38,14 +38,6 @@ export async function middleware(request: NextRequest) {
     .eq('id', sessionData.session.user.id)
     .single();
 
-  console.log(userData);
-
-  // エラーがある場合はログ出力
-  if (error) {
-    console.error('Error fetching user data:', error);
-    return NextResponse.redirect(new URL('/', request.url));
-  }
-
   // ユーザーのロールをチェック
   if (userData.role !== 'admin') {
     return NextResponse.redirect(new URL('/', request.url));

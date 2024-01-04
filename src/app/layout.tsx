@@ -1,15 +1,22 @@
 // src/app/layout.tsx
 import { JotaiProvider } from '@/components/provider/JotaiProvider';
+import { createClient } from '@/utils/supabaseServer';
+import 'server-only';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const supabase = createClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
     <html suppressHydrationWarning lang="ja">
       <body>
-        <JotaiProvider>{children}</JotaiProvider>
+        <JotaiProvider serverSession={session}>{children}</JotaiProvider>
       </body>
     </html>
   );
