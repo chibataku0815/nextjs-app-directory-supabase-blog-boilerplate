@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import { JotaiProvider } from '@/components/provider/JotaiProvider';
-import { createClient } from '@/utils/supabaseServer';
+import { createClient } from '@/utils/supabaseClient';
 import 'server-only';
 
 export default async function RootLayout({
