@@ -1,6 +1,8 @@
 // src/app/layout.tsx
+import '@/app/theme-config.css';
 import { JotaiProvider } from '@/components/provider/JotaiProvider';
 import { createClient } from '@/utils/supabaseClient';
+import '@radix-ui/themes/styles.css';
 import 'server-only';
 
 export default async function RootLayout({
