@@ -1,6 +1,6 @@
 // src/components/provider/JotaiProvider.tsx:
 'use client';
-
+import '@/app/theme-config.css';
 import { queryClient } from '@/utils/queryClient';
 import { config } from '@fortawesome/fontawesome-svg-core'; // 👈
 import '@fortawesome/fontawesome-svg-core/styles.css'; // 👈
