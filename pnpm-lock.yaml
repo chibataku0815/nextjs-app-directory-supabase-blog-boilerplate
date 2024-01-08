@@ -80,6 +80,9 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-loading-skeleton:
+    specifier: ^3.3.1
+    version: 3.3.1(react@18.2.0)
   react-use:
     specifier: ^17.4.2
     version: 17.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -11817,6 +11820,14 @@ packages:
       '@types/react': 18.2.45
       react: 18.2.0
       react-base16-styling: 0.9.1
+    dev: false
+
+  /react-loading-skeleton@3.3.1(react@18.2.0):
+    resolution: {integrity: sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-refresh@0.14.0:
