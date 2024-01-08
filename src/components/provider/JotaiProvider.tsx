@@ -1,11 +1,10 @@
 // src/components/provider/JotaiProvider.tsx:
 'use client';
-import '@/app/theme-config.css';
+
 import { queryClient } from '@/utils/queryClient';
 import { config } from '@fortawesome/fontawesome-svg-core'; // 👈
 import '@fortawesome/fontawesome-svg-core/styles.css'; // 👈
 import { Theme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
 import { Session } from '@supabase/supabase-js';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'jotai';
