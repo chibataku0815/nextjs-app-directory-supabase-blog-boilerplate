@@ -1,15 +1,12 @@
 // hooks/useGithubAuth.js
 'use client';
-import { userAtom } from '@/store/user';
 import { CustomUser } from '@/types/customUser';
 import { Database } from '@/types/supabase';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useAtom } from 'jotai';
 import { usePathname } from 'next/navigation';
 
 const useGithubAuth = () => {
   const pathname = usePathname();
-  const [, setUser] = useAtom(userAtom);
   const supabase = createClientComponentClient<Database>();
 
   const signInWithGithub = async () => {
@@ -38,8 +35,6 @@ const useGithubAuth = () => {
         stripe_subscription_id: null, // 必要に応じて設定
         subscription_status: false, // 必要に応じて設定
       };
-
-      setUser(customUserData);
       console.log('Logged in successfully!');
       return true;
     }

@@ -5,6 +5,7 @@ import UserProfile from '@/components/ui/UserProfile';
 import { useFetchUser } from '@/hooks/useFetchUser';
 import { Box, Container, Flex } from '@radix-ui/themes';
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 const Header: React.FC = () => {
   const { data: user, isLoading } = useFetchUser();
@@ -14,7 +15,9 @@ const Header: React.FC = () => {
       <Container>
         <Flex align="center" justify="between">
           <h1>Header</h1>
-          <Box>...Loading</Box>
+          <Box>
+            <Skeleton count={3} />
+          </Box>
         </Flex>
       </Container>
     );
@@ -24,7 +27,6 @@ const Header: React.FC = () => {
     <Container>
       <Flex align="center" justify="between">
         <h1>Header</h1>
-        {user ? <Box>ログイン中</Box> : <Box>ログインしていません</Box>}
         {user ? <UserProfile /> : <LoginButton />}
       </Flex>
     </Container>
