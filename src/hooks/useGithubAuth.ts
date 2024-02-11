@@ -1,15 +1,13 @@
 // hooks/useGithubAuth.js
 'use client';
 import { CustomUser } from '@/types/customUser';
-import { createBrowserClient } from '@supabase/ssr';
+import { Database } from '@/types/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { usePathname } from 'next/navigation';
 
 const useGithubAuth = () => {
   const pathname = usePathname();
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  const supabase = createClientComponentClient<Database>();
 
   const signInWithGithub = async () => {
     const { error } = await supabase.auth.signInWithOAuth({

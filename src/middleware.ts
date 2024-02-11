@@ -25,9 +25,11 @@ export async function middleware(request: NextRequest) {
 
   // セッションデータを取得
   const { data: sessionData } = await supabase.auth.getSession();
+  console.log('sessionData:', sessionData);
 
   // セッションが存在しない、またはユーザーIDが取得できない場合はリダイレクト
   if (!sessionData.session || !sessionData.session.user.id) {
+    console.log('No session found');
     return NextResponse.redirect(new URL('/', request.url));
   }
 
