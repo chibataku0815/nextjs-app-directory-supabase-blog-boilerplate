@@ -9,10 +9,7 @@ const useGithubAuth = () => {
   const pathname = usePathname();
   const supabase = createClientComponentClient<Database>();
 
-  const redirectUrl =
-    process.env.NODE_ENV === 'development'
-      ? process.env.NEXT_PUBLIC_REDIRECT_URL
-      : process.env.NEXT_PUBLIC_REDIRECT_URL_PRODUCTION;
+  const redirectUrl = process.env.SITE_URL;
 
   const signInWithGithub = async () => {
     alert(process.env.NODE_ENV);
