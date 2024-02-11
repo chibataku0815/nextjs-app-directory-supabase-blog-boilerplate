@@ -1,6 +1,6 @@
 // src/components/provider/JotaiProvider.tsx:
 'use client';
-import '@/app/theme-config.css';
+import '@/styles/theme-config.css';
 import { queryClient } from '@/utils/queryClient';
 import { config } from '@fortawesome/fontawesome-svg-core'; // 👈
 import '@fortawesome/fontawesome-svg-core/styles.css'; // 👈
@@ -28,15 +28,7 @@ export function JotaiProvider(props: JotaiProviderProps) {
         <ThemeProvider attribute="class">
           {/* 開発環境のみDevToolsを表示する */}
           {process.env.NODE_ENV === 'development' && <DevTools />}
-          <Theme
-            accentColor="mint"
-            grayColor="sand"
-            radius="large"
-            scaling="100%"
-            panelBackground="solid"
-          >
-            {children}
-          </Theme>
+          <Theme>{children}</Theme>
         </ThemeProvider>
       </Provider>
     </QueryClientProvider>
