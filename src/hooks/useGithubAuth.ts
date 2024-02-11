@@ -9,15 +9,11 @@ const useGithubAuth = () => {
   const pathname = usePathname();
   const supabase = createClientComponentClient<Database>();
 
-  const redirectUrl = process.env.SITE_URL;
-
   const signInWithGithub = async () => {
-    alert(process.env.NODE_ENV);
-    alert(redirectUrl);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${redirectUrl}/auth/callback?next=${pathname}`,
+        redirectTo: `${location.origin}/auth/callback?next=${pathname}`,
       },
     });
 
