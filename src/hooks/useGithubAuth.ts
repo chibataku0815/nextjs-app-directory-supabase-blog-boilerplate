@@ -9,11 +9,16 @@ const useGithubAuth = () => {
   const pathname = usePathname();
   const supabase = createClientComponentClient<Database>();
 
+  const redirectTo =
+    process.env.NODE_ENV === 'production'
+      ? 'https://nextjs-app-directory-supabase-blog-boilerplate-o95j.vercel.app'
+      : 'http://localhost:3000/auth/callback';
+
   const signInWithGithub = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${location.origin}/auth/callback?next=${pathname}`,
+        redirectTo,
       },
     });
 
