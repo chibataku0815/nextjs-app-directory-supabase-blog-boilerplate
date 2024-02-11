@@ -13,7 +13,7 @@ const useGithubAuth = () => {
 
   const signInWithGithub = async () => {
     alert(process.env.NODE_ENV);
-    alert(process.env.NEXT_PUBLIC_REDIRECT_URL_PRODUCTION);
+    alert(redirectUrl);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
