@@ -1,7 +1,7 @@
 // hooks/useGithubAuth.js
 'use client';
 import { CustomUser } from '@/types/customUser';
-import { Database } from '@/types/supabase';
+import { Database } from '@/types/examples';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { usePathname } from 'next/navigation';
 
